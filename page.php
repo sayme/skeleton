@@ -8,10 +8,17 @@
  *
  * @package Skeleton
  */
-?>
 
-<?php while ( have_posts() ) : the_post(); ?>
+get_header(); ?>
 
-    <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+<div style="width:500px; border: 1px solid grey; padding: 10px">
+    <?php while ( have_posts() ) : the_post(); ?>
 
-<?php endwhile; ?>
+        <?php the_post_thumbnail(); ?>
+
+        <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+
+    <?php endwhile; ?>
+</div>
+
+<?php get_footer(); ?>

@@ -1,6 +1,6 @@
 Skeleton
 ===
-A basic Wordpress theme without predefined template HTML. Set up to be used with gulp.
+A basic WordPress theme without predefined template HTML. Set up to be used with gulp.
 
 ### Using gulp
 -----

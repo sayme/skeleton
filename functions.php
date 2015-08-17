@@ -42,7 +42,7 @@ function theme_setup() {
     register_nav_menus( array(
         'primary' => __( 'Primary menu', 'skeleton' ),
         'secondary' => __( 'Secondary menu', 'skeleton' ),
-        'footer' => __( 'Footer menu' )
+        'footer' => __( 'Footer menu', 'skeleton' )
     ) );
  
     /*
@@ -81,8 +81,8 @@ function custom_post_type() {
     register_post_type( 'cpt',
         array(
             'labels' => array(
-                'name' => __( 'Custom posts' ),
-                'singular_name' => __( 'Custom post' )
+                'name' => __( 'Custom posts', 'skeleton' ),
+                'singular_name' => __( 'Custom post', 'skeleton' )
             ),
             'public' => true,
             'has_archive' => false,
