@@ -73,11 +73,11 @@ function theme_setup() {
 add_action( 'after_setup_theme', 'theme_setup' );
 
 /**
- * Register custom post type
+ * Register custom post types
  * 
- * See: https://codex.wordpress.org/Function_Reference/register_post_type
+ * @link https://codex.wordpress.org/Function_Reference/register_post_type
  */
-function custom_post_type() {
+function register_custom_post_types() {
     register_post_type( 'cpt',
         array(
             'labels' => array(
@@ -92,7 +92,7 @@ function custom_post_type() {
         )
     );
 }
-add_action( 'init', 'custom_post_type' );
+add_action( 'init', 'register_custom_post_types' );
 
 /**
  * Register widget area.
@@ -113,15 +113,38 @@ function widgets_init() {
 add_action( 'widgets_init', 'widgets_init' );
 
 /**
- * Replace the ugly excerpt ending.
+ * Set the post excerpt length to 40 words.
  *
- * @param string the_excerpt_rss output
- * @return string
+ * To override this length in a child theme, remove
+ * the filter and add your own function tied to
+ * the excerpt_length filter hook.
+ *
+ * @param int $length The number of excerpt characters.
+ * @return int The filtered number of characters.
  */
-function replace_excerpt_rss( $output ) {
-    return preg_replace( '/\[([^\pL])+\]/', '...', $output );
+function set_excerpt_length( $length ) {
+    return 40;
 }
-add_filter( 'the_excerpt_rss', 'replace_excerpt_rss' );
+add_filter( 'excerpt_length', 'set_excerpt_length' );
+
+/**
+ * Replace "[...]" in the Read More link with an ellipsis.
+ *
+ * The "[...]" is appended to automatically generated excerpts.
+ *
+ * To override this in a child theme, remove the filter and add your own
+ * function tied to the excerpt_more filter hook.
+ *
+ * @param string $more The Read More text.
+ * @return The filtered Read More text.
+ */
+function auto_excerpt_more( $more ) {
+    if ( ! is_admin() ) {
+        return ' &hellip;';
+    }
+    return $more;
+}
+add_filter( 'excerpt_more', 'auto_excerpt_more' );
 
 /**
  * Add all the scripts here.
