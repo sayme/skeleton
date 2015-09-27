@@ -30,7 +30,7 @@
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function theme_setup() {
+function skeleton_theme_setup() {
  
     /*
      * Make theme available for translation.
@@ -70,14 +70,14 @@ function theme_setup() {
      */
     add_theme_support( 'title-tag' );
 }
-add_action( 'after_setup_theme', 'theme_setup' );
+add_action( 'after_setup_theme', 'skeleton_theme_setup' );
 
 /**
  * Register custom post types
  * 
  * @link https://codex.wordpress.org/Function_Reference/register_post_type
  */
-function register_custom_post_types() {
+function skeleton_register_post_types() {
     register_post_type( 'cpt',
         array(
             'labels' => array(
@@ -92,14 +92,14 @@ function register_custom_post_types() {
         )
     );
 }
-add_action( 'init', 'register_custom_post_types' );
+add_action( 'init', 'skeleton_register_post_types' );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function widgets_init() {
+function skeleton_widgets_init() {
     register_sidebar( array(
         'name'          => __( 'Sidebar', 'skeleton' ),
         'id'            => 'sidebar-1',
@@ -110,7 +110,7 @@ function widgets_init() {
         'after_title'   => '</h2>',
     ) );
 }
-add_action( 'widgets_init', 'widgets_init' );
+add_action( 'widgets_init', 'skeleton_widgets_init' );
 
 /**
  * Set the post excerpt length to 40 words.
@@ -122,10 +122,10 @@ add_action( 'widgets_init', 'widgets_init' );
  * @param int $length The number of excerpt characters.
  * @return int The filtered number of characters.
  */
-function set_excerpt_length( $length ) {
+function skeleton_set_excerpt_length( $length ) {
     return 40;
 }
-add_filter( 'excerpt_length', 'set_excerpt_length' );
+add_filter( 'excerpt_length', 'skeleton_set_excerpt_length' );
 
 /**
  * Replace "[...]" in the Read More link with an ellipsis.
@@ -138,21 +138,21 @@ add_filter( 'excerpt_length', 'set_excerpt_length' );
  * @param string $more The Read More text.
  * @return The filtered Read More text.
  */
-function auto_excerpt_more( $more ) {
+function skeleton_excerpt_more( $more ) {
     if ( ! is_admin() ) {
         return ' &hellip;';
     }
     return $more;
 }
-add_filter( 'excerpt_more', 'auto_excerpt_more' );
+add_filter( 'excerpt_more', 'skeleton_excerpt_more' );
 
 /**
  * Add all the scripts here.
  */
-function register_global_template_scripts() {
+function skeleton_enqueue_scripts() {
     wp_enqueue_style( 'default-style', get_stylesheet_uri(), array(), '1.0.0' );
 }
-add_action( 'wp_enqueue_scripts', 'register_global_template_scripts' );
+add_action( 'wp_enqueue_scripts', 'skeleton_enqueue_scripts' );
 
 // Custom template tags
 require get_template_directory() . '/inc/template-tags.php';
