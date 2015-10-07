@@ -16,6 +16,12 @@ get_header(); ?>
         if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
             comments_template();
         endif; 
+
+        // The post pagination
+        the_post_navigation( array(
+                'next_text' => '%title',
+                'prev_text' => '%title'
+            ) );
     ?>
 
 <?php endwhile; ?>

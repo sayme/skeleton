@@ -78,19 +78,7 @@ add_action( 'after_setup_theme', 'skeleton_theme_setup' );
  * @link https://codex.wordpress.org/Function_Reference/register_post_type
  */
 function skeleton_register_post_types() {
-    register_post_type( 'cpt',
-        array(
-            'labels' => array(
-                'name' => __( 'Custom posts', 'skeleton' ),
-                'singular_name' => __( 'Custom post', 'skeleton' )
-            ),
-            'public' => true,
-            'has_archive' => false,
-            'rewrite' => array( 'slug' => 'cpt' ),
-            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
-            'taxonomies' => array( 'post_tag' )
-        )
-    );
+    // Custom post types should be registered here
 }
 add_action( 'init', 'skeleton_register_post_types' );
 
@@ -147,10 +135,12 @@ function skeleton_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'skeleton_excerpt_more' );
 
 /**
- * Add all the scripts here.
+ * Add all the main scripts and styles here.
  */
 function skeleton_enqueue_scripts() {
-    wp_enqueue_style( 'default-style', get_stylesheet_uri(), array(), '1.0.0' );
+    wp_enqueue_style( 'default-style', get_stylesheet_uri() );
+    wp_enqueue_style( 'vendor-style', get_template_directory_uri() . '/assets/css/vendor.css' );
+    wp_enqueue_script( 'vendor-scripts', get_template_directory_uri() . '/assets/js/vendor.js' );
 }
 add_action( 'wp_enqueue_scripts', 'skeleton_enqueue_scripts' );
 

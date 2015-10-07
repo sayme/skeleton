@@ -11,14 +11,12 @@
 
 get_header(); ?>
 
-<div style="width:500px; border: 1px solid grey; padding: 10px">
-    <?php while ( have_posts() ) : the_post(); ?>
+<?php while ( have_posts() ) : the_post(); ?>
 
-        <?php the_post_thumbnail(); ?>
+    <?php the_post_thumbnail(); ?>
 
-        <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+    <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
 
-    <?php endwhile; ?>
-</div>
+<?php endwhile; ?>
 
 <?php get_footer(); ?>

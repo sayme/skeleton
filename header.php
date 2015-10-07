@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php wp_title( ' - ', true, 'right' ); ?></title>
 
-    <?php og_meta_tags(); ?>
+    <?php skeleton_og_meta_tags(); ?>
 
     <?php wp_head(); ?>
 </head>
