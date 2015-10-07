@@ -138,8 +138,14 @@ add_filter( 'excerpt_more', 'skeleton_excerpt_more' );
  * Add all the main scripts and styles here.
  */
 function skeleton_enqueue_scripts() {
+
+    // WordPress style.css
     wp_enqueue_style( 'default-style', get_stylesheet_uri() );
+
+    // vendor.css created with gulp
     wp_enqueue_style( 'vendor-style', get_template_directory_uri() . '/assets/css/vendor.css' );
+
+    // vendor.js created with gulp
     wp_enqueue_script( 'vendor-scripts', get_template_directory_uri() . '/assets/js/vendor.js' );
 }
 add_action( 'wp_enqueue_scripts', 'skeleton_enqueue_scripts' );
