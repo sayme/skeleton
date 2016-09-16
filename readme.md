@@ -4,8 +4,8 @@ A basic WordPress theme without predefined template HTML. Set up to be used with
 
 ### Using gulp
 -----
-Before using gulp make sure you have installed node, sass, bower and gulp (globaly).
-When you have everything installd just run the commands below and you are up and running.
+Before using gulp make sure you have installed node, sass, bower and gulp (globally).
+When you have everything installed just run the commands below and you are up and running.
 ```sh
 npm install
 bower install
